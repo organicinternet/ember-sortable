@@ -645,7 +645,8 @@ function getBorderSpacing(el) {
   el = $(el);
 
   let css = el.css('border-spacing'); // '0px 0px'
-  let [horizontal, vertical] = css.split(' ');
+  const [horizontal, initialVertical] = css.split(' ');
+  const vertical = initialVertical === undefined ? horizontal : initialVertical;
 
   return {
     horizontal: parseFloat(horizontal),
